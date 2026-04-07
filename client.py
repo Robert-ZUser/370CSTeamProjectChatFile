@@ -5,7 +5,7 @@ import datetime # supports collection of realtime timestamps
 
 # Server IP and port configuration
 #*********************************************************************************************************************************************
-SERVER_IP = "127.0.0.1"  # Change this to your server's IP
+SERVER_IP = "#.#.#.#"  # Change this to your server's IP
 #*********************************************************************************************************************************************
 SERVER_PORT = 9000            # Port number the server is listening on
 
