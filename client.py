@@ -119,9 +119,8 @@ def send_message(client_socket, name):
 
 # Main function
 def main():
-    
+    # prompt user for ip they wish to connect to and if not just connect to local host
     target_ip = input("Enter the server IP you would like to connect to or leave empty for local host: ").strip()
-    
     if not target_ip:
         target_ip = LOCALHOST_IP
     
