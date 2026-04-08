@@ -3,9 +3,9 @@ import threading
 import os
 import datetime # supports collection of realtime timestamps
 
-# Server IP and port configuration
+# Server defaults to local host IP
 #*********************************************************************************************************************************************
-SERVER_IP = "#.#.#.#"  # Change this to your server's IP
+LOCALHOST_IP = "127.0.0.1"  # Local Host IP
 #*********************************************************************************************************************************************
 SERVER_PORT = 9000            # Port number the server is listening on
 
@@ -119,8 +119,15 @@ def send_message(client_socket, name):
 
 # Main function
 def main():
+    
+    target_ip = input("Enter the server IP you would like to connect to or leave empty for local host: ").strip()
+    
+    if not target_ip:
+        target_ip = LOCALHOST_IP
+    
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # Create TCP socket
-    client_socket.connect((SERVER_IP, SERVER_PORT))  # Connect to the server
+    client_socket.connect((target_ip, SERVER_PORT))  # Connect to the server
+        
 
     # Ask the user for a valid name
     while True:
