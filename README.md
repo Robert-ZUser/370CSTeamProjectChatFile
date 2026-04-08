@@ -5,13 +5,13 @@ This is a simple client-server chat application in Python. Different devices can
 ## How It Works
 
 1. **Server Side**:
-   - Listens on a network IP and port for incoming client connections.
+   - Listens on all network interfaces (0.0.0.0) and port 9000 for incoming client connections.
    - Receives the username from each client.
    - Receives messages or files from clients and forwards them to the intended recipient(s).
-   - Handles multiple clients at the same time using threads.
+   - Handles multiple clients at the same time using threads and prevents file overwrite via unique IDs.
 
 2. **Client Side**:
-   - Connects to the server using its IP and port.
+   - Connects to the server using its host machine IP or localhost.
    - Sends the username to the server.
    - Runs a thread to continuously listen for messages or files from other clients.
    - Reads user input to send messages or files to other clients.
@@ -39,7 +39,7 @@ The server will start listening for clients.
 
 3. Run the client:
 python client.py
-
+Enter Server IP.
 Enter a username when prompted.
 
 To send messages:
@@ -56,6 +56,6 @@ Allows user to see the other people that are online at that moment
 
 ## Notes
 
-Usernames cannot contain the character | because it is used in communication headers.
+Usernames cannot contain the character "|" because it is used in communication headers.
 Files are sent in chunks and received files are saved with a prefix like received_.
 Multiple clients can communicate at the same time using threads.
