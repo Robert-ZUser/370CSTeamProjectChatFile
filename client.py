@@ -119,8 +119,9 @@ def send_message(client_socket, name):
 
 # Main function
 def main():
-    # prompt user for ip they wish to connect to and if not just connect to local host
+    
     target_ip = input("Enter the server IP you would like to connect to or leave empty for local host: ").strip()
+    
     if not target_ip:
         target_ip = LOCALHOST_IP
     
@@ -131,9 +132,9 @@ def main():
     # Ask the user for a valid name
     while True:
         name = input("Enter your name: ").strip()
-        if name and "|" not in name:  # Name cannot be empty or contain '|'
+        if name and "|" not in name and " " not in name:  # Name cannot be empty or contain '|'
             break
-        print("Invalid name. Cannot be empty or contain '|'")
+        print("Invalid name. Cannot be empty or contain spaces or '|'")
     
     client_socket.sendall(f"{name}\n".encode())  # Send name to server
     print(f"[Connected as {name}]")
